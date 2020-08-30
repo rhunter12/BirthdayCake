@@ -51,5 +51,12 @@
             android:layout_height="wrap_content"
             android:text="yay..." />
 
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Frosting" />
+
     </LinearLayout>
 </LinearLayout>
