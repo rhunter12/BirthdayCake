@@ -147,8 +147,8 @@ public class CakeView extends SurfaceView {
         canvas.drawRect(cakeLeft, top, cakeLeft + cakeWidth, bottom, cakePaint);
 
 
-        canvas.drawText(Integer.toString(model.xPos), 1500.0f, 800.0f, redPaint);
-        canvas.drawText(Integer.toString(model.yPos), 1500.0f, 900.0f, redPaint);
+        canvas.drawText(Integer.toString(model.xPos), 1500.0f, 700.0f, redPaint);
+        canvas.drawText(Integer.toString(model.yPos), 1500.0f, 750.0f, redPaint);
 
 
     switch(model.numCandlesLit) {
