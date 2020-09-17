@@ -6,7 +6,7 @@ public class CakeModel {
     public int numCandlesLit = 2;
     public boolean hasFrosting = true;
     public boolean hasCandles = true;
-    public int xPos = -100.0f;
-    public int yPos = -100.0f;
+    public int xPos = -100;
+    public int yPos = -100;
 
 }
