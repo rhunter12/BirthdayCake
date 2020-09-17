@@ -18,6 +18,7 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint balloonPaint=new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -61,6 +62,8 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        balloonPaint.setColor(0xFF0000FF);
+        balloonPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -94,6 +97,18 @@ public class CakeView extends SurfaceView {
 
     }
 
+    public void drawBalloon(Canvas canvas){
+
+        if (model.balloon_cx>0 && model.balloon_cy>0){
+            float left=model.balloon_cx-20.0f;
+            float right=model.balloon_cx+20.0f;
+            float top=model.balloon_cy+40.0f;
+            float bottom=model.balloon_cy-40.0f;
+            canvas.drawOval(left,top,right,bottom,balloonPaint);
+            canvas.drawLine(model.balloon_cx,top,right,top+20.0f,balloonPaint);
+        }
+    }
+
     /**
      * onDraw is like "paint" in a regular Java program.  While a Canvas is
      * conceptually similar to a Graphics in javax.swing, the implementation has
@@ -104,6 +119,7 @@ public class CakeView extends SurfaceView {
     @Override
     public void onDraw(Canvas canvas)
     {
+
         //top and bottom are used to keep a running tally as we progress down the cake layers
         float top = cakeTop;
         float bottom = cakeTop + frostHeight;
@@ -155,7 +171,7 @@ public class CakeView extends SurfaceView {
                 drawCandle(canvas, cakeLeft + cakeWidth - 4*candleWidth, cakeTop);
                 break;
         }
-
+        drawBalloon(canvas);
     }//onDraw
 
     public CakeModel getModel() {
