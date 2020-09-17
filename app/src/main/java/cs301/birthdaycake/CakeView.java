@@ -19,6 +19,7 @@ public class CakeView extends SurfaceView {
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
     Paint balloonPaint=new Paint();
+    Paint redPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -65,6 +66,9 @@ public class CakeView extends SurfaceView {
         balloonPaint.setColor(0xFF0000FF);
         balloonPaint.setStyle(Paint.Style.FILL);
 
+        redPaint.setColor(Color.RED);
+        redPaint.setTextSize(50);
+
         setBackgroundColor(Color.WHITE);  //better than black default
 
     }
@@ -99,13 +103,13 @@ public class CakeView extends SurfaceView {
 
     public void drawBalloon(Canvas canvas){
 
-        if (model.balloon_cx>0 && model.balloon_cy>0){
-            float left=model.balloon_cx-20.0f;
-            float right=model.balloon_cx+20.0f;
-            float top=model.balloon_cy+40.0f;
-            float bottom=model.balloon_cy-40.0f;
+        if (model.xPos>0 && model.yPos>0){
+            float left=model.xPos-20.0f;
+            float right=model.xPos+20.0f;
+            float top=model.yPos+40.0f;
+            float bottom=model.yPos-40.0f;
             canvas.drawOval(left,top,right,bottom,balloonPaint);
-            canvas.drawLine(model.balloon_cx,top,right,top+20.0f,balloonPaint);
+            canvas.drawLine(model.xPos,top,right,top+20.0f,balloonPaint);
         }
     }
 
@@ -141,6 +145,11 @@ public class CakeView extends SurfaceView {
 
         //Then a second cake layer
         canvas.drawRect(cakeLeft, top, cakeLeft + cakeWidth, bottom, cakePaint);
+
+
+        canvas.drawText(Integer.toString(model.xPos), 1500.0f, 800.0f, redPaint);
+        canvas.drawText(Integer.toString(model.yPos), 1500.0f, 900.0f, redPaint);
+
 
     switch(model.numCandlesLit) {
             case 0:
